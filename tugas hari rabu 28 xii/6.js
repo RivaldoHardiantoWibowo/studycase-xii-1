@@ -1,14 +1,24 @@
-function statusMegathurst(depth){
+const readline = require('readline');
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+function statusMegathurst(depth) {
     if (depth <= 500.0) {
-        return 'kondisi aman boskuhhh'
-    } else if(depth > 500.1 && depth <= 600.0){
-        return 'harus waspada ya brooo'
-    } else if(depth > 600.1 && depth <= 650.0){
-        return 'siaga bang broo takut kenapa napa'
+        return 'Kondisi aman boskuhhh';
+    } else if (depth > 500.1 && depth <= 600.0) {
+        return 'Harus waspada ya brooo';
+    } else if (depth > 600.1 && depth <= 650.0) {
+        return 'Siaga bang broo takut kenapa napa';
     } else {
-        return 'broooooo siaga1 siaga1'
+        return 'Broooooo siaga1 siaga1';
     }
 }
 
-let tinggi_air = 700.3
-console.log(statusMegathurst(tinggi_air));
+rl.question('Masukkan kedalaman air: ', (input) => {
+    const depth = parseFloat(input);
+    console.log(statusMegathurst(depth));
+    rl.close();
+});

@@ -1,25 +1,36 @@
-function positifnegatif(num) {
-    if (num === 0) {
-        return 'dilarang menginput bilangan 0'
-    }
-    else if (num > 0) {
-        return `${num} ini bilangan positif`;
-    } else if (num < 0) {
-        return `${num} ini adalah bilangan negatif`;
-    }
-}
+const readline = require('readline');
 
-function genapganjil(num){
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+function checkNumber(num) {
     if (num === 0) {
-        return 'dilarang menginput bilangan 0'
+        return 'Dilarang menginput bilangan 0';
     }
-    else if (num % 2 === 0) {
-        return `${num} ini adalah bilangan genap`;
+
+    let result = '';
+
+    if (num > 0) {
+        result += `${num} adalah bilangan positif, `;
     } else {
-        return `${num} ini adalah bilangan ganjil`;
+        result += `${num} adalah bilangan negatif, `;
     }
+
+    if (num % 2 === 0) {
+        result += `dan ${num} adalah bilangan genap.`;
+    } else {
+        result += `dan ${num} adalah bilangan ganjil.`;
+    }
+
+    return result;
 }
 
-let number = 20;
-console.log(positifnegatif(number));
-console.log(genapganjil(number));
+rl.question('Masukkan sebuah angka: ', (input) => {
+    const number = parseInt(input);
+
+    console.log(checkNumber(number));
+
+    rl.close();
+});
